@@ -1,0 +1,4 @@
+.git*
+*.conf
+Dockerfile
+.dockerignore

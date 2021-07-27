@@ -10,7 +10,7 @@ pipeline {
         stage('Archive'){
             steps{
                 echo 'Archivando..'
-                archiveArtufacts artifacts: 'build/libs.jar'
+                archiveArtufacts artifacts: 'build/libs/*.jar'
             }
         }
     } 

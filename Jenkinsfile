@@ -1,25 +1,16 @@
 pipeline {
    agent any
-    options {
-        ansiColor('xterm')
-    }
     stages {
         stage('Build') {
             steps {
-                echo'Building..'
-                echo '\033[34mHello\033[0m \033[33mcolorful\033[0m \033[35mworld!\033[0m'
-                sh 'docker-compose build'
+                echo'Building..
+                sh './gradlew assemble'
             }
         }
-        stage('Test'){
+        stage('Archive'){
             steps{
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy'){
-            steps{
-                echo 'Deploying..'
-                sh 'docker-compose up -d'
+                echo 'Archivando..'
+                archiveArtufacts artifacts: 'build/libs.jar'
             }
         }
     } 

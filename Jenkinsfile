@@ -6,8 +6,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                echo'Building..'
                 echo '\033[34mHello\033[0m \033[33mcolorful\033[0m \033[35mworld!\033[0m'
-                sh 'docker compose build'
+                sh 'docker-compose build'
             }
         }
         stage('Test'){

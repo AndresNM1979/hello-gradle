@@ -1,18 +1,25 @@
 pipeline {
-    agent any
-
+   agent any
+    options {
+        ansiColor('xterm')
+    }
     stages {
         stage('Build') {
             steps {
-                sh '''docker-compose build
-               docker image tag  hello-gradle:latest hello-gradle:MAIN-1.0.${BUILD_NUMBER}-${GIT_COMMIT}'''
+                echo '\033[34mHello\033[0m \033[33mcolorful\033[0m \033[35mworld!\033[0m'
+                sh 'docker compose build'
             }
         }
-        stage('Deploy') {
-            steps {
-                sh '''
-                docker-compose up -d'''
+        stage('Test'){
+            steps{
+                echo 'Testing..'
             }
         }
-    }
+        stage('Deploy'){
+            steps{
+                echo 'Deploying..'
+                sh 'dpcker-compose up -d'
+            }
+        }
+    } 
 }
